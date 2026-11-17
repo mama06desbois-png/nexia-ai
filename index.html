@@ -4,249 +4,77 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NEXIA AI - Plateforme éducative</title>
+<title>NEXIA AI | Education Platform</title>
 
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-
 :root{
 --primary:#5145bd;
 --bg:#f5f6fa;
 --text:#20283a;
 --muted:#858da0;
---line:#eceef3;
+--line:#e9eaf0;
 --card:#fff;
 }
-
-body{
-font-family:Inter,Arial,sans-serif;
-background:var(--bg);
-color:var(--text);
-}
-
-.sidebar{
-position:fixed;
-inset:0 auto 0 0;
-width:245px;
-background:var(--card);
-border-right:1px solid var(--line);
-padding:27px 18px;
-z-index:2;
-}
-
-.logo{
-font-size:24px;
-font-weight:800;
-color:var(--primary);
-margin:0 12px 40px;
-}
-
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Arial,sans-serif;background:var(--bg);color:var(--text)}
+.sidebar{position:fixed;left:0;top:0;bottom:0;width:250px;background:var(--card);border-right:1px solid var(--line);padding:25px 17px;overflow-y:auto}
+.logo{font-size:25px;font-weight:800;color:var(--primary);margin:5px 12px 40px}
 .logo span{color:var(--text)}
-
-.section{
-font-size:11px;
-color:#9ba2b2;
-font-weight:bold;
-margin:25px 12px 12px;
-letter-spacing:1px;
-}
-
-.nav{
-display:flex;
-align-items:center;
-gap:13px;
-padding:13px 14px;
-margin:5px 0;
-border-radius:9px;
-color:#697386;
-cursor:pointer;
-font-size:14px;
-}
-
-.nav:hover,.nav.active{
-background:#efedff;
-color:var(--primary);
-font-weight:700;
-}
-
-.main{
-margin-left:245px;
-padding:30px 40px;
-max-width:1600px;
-}
-
-.top{
-display:flex;
-justify-content:space-between;
-align-items:center;
-margin-bottom:35px;
-gap:15px;
-}
-
-.search{
-padding:12px 16px;
-border:1px solid #e4e6ed;
-border-radius:9px;
-background:var(--card);
-width:min(360px,70%);
-}
-
-.avatar{
-background:var(--primary);
-color:white;
-border-radius:50%;
-width:39px;
-height:39px;
-display:grid;
-place-items:center;
-font-weight:bold;
-}
-
-h1{font-size:27px;margin-bottom:9px}
-
-.subtitle{
-color:var(--muted);
-font-size:14px;
-line-height:1.6;
-}
-
-.cards{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:18px;
-margin:28px 0;
-}
-
-.card,.panel{
-background:var(--card);
-padding:22px;
-border:1px solid var(--line);
-border-radius:13px;
-}
-
-.card small{color:var(--muted)}
-
-.number{
-font-size:29px;
-font-weight:750;
-margin-top:12px;
-}
-
-.panel{
-padding:24px;
-margin-bottom:22px;
-}
-
-.panel h2{
-font-size:18px;
-margin-bottom:17px;
-}
-
-.courses{
-display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:18px;
-}
-
-.course{
-background:var(--card);
-border:1px solid var(--line);
-border-radius:11px;
-padding:19px;
-}
-
-.tag{
-font-size:11px;
-color:var(--primary);
-background:#efedff;
-padding:6px 9px;
-border-radius:5px;
-display:inline-block;
-margin-bottom:13px;
-}
-
-.course h3{
-font-size:16px;
-margin-bottom:9px;
-}
-
-.course p{
-font-size:13px;
-color:var(--muted);
-margin-bottom:15px;
-line-height:1.5;
-}
-
-button{
-background:var(--primary);
-color:white;
-border:0;
-padding:11px 16px;
-border-radius:7px;
-cursor:pointer;
-font-weight:600;
-}
-
-button:hover{filter:brightness(.92)}
-
+.section{font-size:10px;color:#9ba2b2;font-weight:bold;margin:25px 12px 12px;letter-spacing:1.2px}
+.nav{display:flex;gap:13px;padding:13px;border-radius:9px;margin:4px 0;color:#697386;cursor:pointer;font-size:14px}
+.nav:hover,.nav.active{background:#efedff;color:var(--primary);font-weight:bold}
+.admin-nav{color:#c18a29}
+.main{margin-left:250px;padding:30px 40px;max-width:1700px}
+.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:35px}
+.search{padding:12px 15px;border:1px solid var(--line);border-radius:9px;background:var(--card);width:300px;max-width:65%}
+.avatar{background:var(--primary);color:white;width:40px;height:40px;border-radius:50%;display:grid;place-items:center;font-weight:bold}
+h1{font-size:28px;margin-bottom:9px}
+.subtitle{color:var(--muted);font-size:14px;line-height:1.6}
 .page{display:none}
 .page.active{display:block}
-
-input,select{
-padding:11px;
-border:1px solid #ddd;
-border-radius:7px;
-margin:8px 0;
-max-width:100%;
-background:var(--card);
-color:var(--text);
-}
-
-body.dark{
---bg:#171b28;
---text:#f1f2f7;
---muted:#aab2c3;
---line:#353c50;
---card:#242a3a;
-}
-
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:17px;margin:28px 0}
+.card,.panel{background:var(--card);border:1px solid var(--line);border-radius:13px;padding:23px}
+.card small{color:var(--muted)}
+.number{font-size:29px;font-weight:bold;margin-top:12px}
+.panel{margin-bottom:20px}
+.panel h2{font-size:18px;margin-bottom:17px}
+.courses{display:grid;grid-template-columns:repeat(2,1fr);gap:17px}
+.course{background:var(--card);border:1px solid var(--line);padding:20px;border-radius:11px}
+.tag{display:inline-block;padding:6px 9px;background:#efedff;color:var(--primary);font-size:11px;border-radius:5px;margin-bottom:13px}
+.course h3{font-size:16px;margin-bottom:9px}
+.course p{font-size:13px;color:var(--muted);margin-bottom:15px}
+button{background:var(--primary);color:white;border:0;padding:11px 16px;border-radius:7px;cursor:pointer;font-weight:bold}
+button:hover{opacity:.85}
+button.danger{background:#dc4545}
+button.success{background:#269b70}
+button.secondary{background:#687386}
+input,select{padding:11px;border:1px solid var(--line);border-radius:7px;margin:8px 0;background:var(--card);color:var(--text)}
+.table-wrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:13px;min-width:600px}
+th,td{text-align:left;padding:14px 10px;border-bottom:1px solid var(--line)}
+th{color:var(--muted);font-size:11px;text-transform:uppercase}
+.status{padding:5px 9px;border-radius:20px;font-size:11px;background:#e4f7ed;color:#168554}
+.banned{background:#fde8e8;color:#c33333}
+.admin-title{display:flex;align-items:center;gap:10px;margin-bottom:25px}
+.admin-title span{background:#fff0d8;color:#a56b12;padding:7px 10px;border-radius:7px;font-size:11px;font-weight:bold}
+.notice{background:#fff8e8;color:#936414;padding:13px;border-radius:8px;font-size:13px;line-height:1.5;margin-bottom:18px}
+.modal{display:none;position:fixed;inset:0;background:#0008;z-index:10;align-items:center;justify-content:center;padding:20px}
+.modal-box{background:white;color:#20283a;padding:25px;border-radius:14px;width:100%;max-width:400px}
+.modal-box h2{margin-bottom:15px}
+.modal-box input,.modal-box select{width:100%}
+.modal-actions{display:flex;gap:10px;margin-top:15px}
+.modal-actions button{flex:1}
+body.dark{--bg:#171b28;--text:#f1f2f7;--muted:#aab2c3;--line:#353c50;--card:#242a3a}
 body.dark .nav{color:#c0c6d4}
-body.dark .nav.active{
-background:#383253;
-color:#c7beff;
-}
-
-body.dark .tag{
-background:#383253;
-color:#c7beff;
-}
-
+body.dark .nav.active{background:#383253;color:#c7beff}
+body.dark .tag{background:#383253;color:#c7beff}
 @media(max-width:750px){
-.sidebar{
-width:65px;
-padding:20px 7px;
-}
-
-.logo{
-font-size:0;
-margin:10px 5px 35px;
-}
-
+.sidebar{width:67px;padding:20px 6px}
+.logo{font-size:0;margin:10px 5px 35px}
 .logo:first-letter{font-size:23px}
-
-.nav{
-font-size:0;
-justify-content:center;
-padding:14px 4px;
-}
-
+.nav{font-size:0;justify-content:center;padding:14px 4px}
 .section{font-size:0}
-
-.main{
-margin-left:65px;
-padding:20px 13px;
-}
-
+.main{margin-left:67px;padding:20px 13px}
 .cards{grid-template-columns:1fr}
 .courses{grid-template-columns:1fr}
 .search{width:140px}
@@ -257,305 +85,313 @@ padding:20px 13px;
 <body>
 
 <aside class="sidebar">
-
 <div class="logo">N<span>EXIA</span> AI</div>
 
 <div class="section">MENU PRINCIPAL</div>
-
-<div class="nav active" onclick="showPage('home',this)">
-⌂ &nbsp; Tableau de bord
-</div>
-
-<div class="nav" onclick="showPage('courses',this)">
-▤ &nbsp; Formations
-</div>
-
-<div class="nav" onclick="showPage('certificates',this)">
-♜ &nbsp; Certificats
-</div>
+<div class="nav active" onclick="showPage('home',this)">⌂ &nbsp; Tableau de bord</div>
+<div class="nav" onclick="showPage('courses',this)">▤ &nbsp; Formations</div>
+<div class="nav" onclick="showPage('certificates',this)">♜ &nbsp; Certificats</div>
 
 <div class="section">COMMUNAUTÉ</div>
-
-<div class="nav" onclick="showPage('friends',this)">
-♧ &nbsp; Mes amis
-</div>
+<div class="nav" onclick="showPage('friends',this)">♧ &nbsp; Mes amis</div>
 
 <div class="section">PERSONNEL</div>
+<div class="nav" onclick="showPage('profile',this)">◉ &nbsp; Mon compte</div>
+<div class="nav" onclick="showPage('settings',this)">⚙ &nbsp; Paramètres</div>
 
-<div class="nav" onclick="showPage('profile',this)">
-◉ &nbsp; Mon compte
-</div>
-
-<div class="nav" onclick="showPage('settings',this)">
-⚙ &nbsp; Paramètres
-</div>
-
+<div class="section">ADMINISTRATION</div>
+<div class="nav admin-nav" onclick="showPage('admin',this)">⬡ &nbsp; Panel Admin</div>
 </aside>
 
 <main class="main">
 
 <div class="top">
-<input class="search"
-placeholder="Rechercher une formation..."
-oninput="searchCourses(this.value)">
+<input class="search" placeholder="Rechercher..." oninput="searchAll(this.value)">
 <div class="avatar">N</div>
 </div>
 
 <!-- ACCUEIL -->
-
 <section class="page active" id="home">
-
 <h1>Bonjour et bienvenue 👋</h1>
-
-<p class="subtitle">
-Voici un aperçu de votre espace d'apprentissage.
-</p>
+<p class="subtitle">Votre espace personnel d'apprentissage NEXIA AI.</p>
 
 <div class="cards">
-
-<div class="card">
-<small>Formations suivies</small>
-<div class="number">0</div>
-</div>
-
-<div class="card">
-<small>Certificats obtenus</small>
-<div class="number">0</div>
-</div>
-
-<div class="card">
-<small>Progression globale</small>
-<div class="number">0 %</div>
-</div>
-
+<div class="card"><small>Formations suivies</small><div class="number">0</div></div>
+<div class="card"><small>Certificats obtenus</small><div class="number">0</div></div>
+<div class="card"><small>Progression globale</small><div class="number">0 %</div></div>
 </div>
 
 <div class="panel">
 <h2>Reprendre mon apprentissage</h2>
-<p class="subtitle">
-Vous n'avez pas encore commencé de formation.
-</p>
-<br>
-<button onclick="showPage('courses')">
-Découvrir les formations →
-</button>
+<p class="subtitle">Vous n'avez pas encore commencé de formation.</p><br>
+<button onclick="showPage('courses')">Découvrir les formations →</button>
 </div>
-
 <div class="panel">
-<h2>Votre espace NEXIA AI</h2>
-<p class="subtitle">
-Apprenez de nouvelles compétences et construisez votre avenir.
-</p>
+<h2>Bienvenue sur NEXIA AI</h2>
+<p class="subtitle">Développez vos compétences grâce à des parcours courts et accessibles.</p>
 </div>
-
 </section>
 
 <!-- FORMATIONS -->
-
 <section class="page" id="courses">
-
 <h1>Catalogue des formations</h1>
-<p class="subtitle">
-Découvrez nos parcours éducatifs.
-</p>
-<br>
-
+<p class="subtitle">Découvrez nos parcours éducatifs.</p><br>
 <div class="courses" id="courseList">
-
-<div class="course">
-<span class="tag">INFORMATIQUE</span>
-<h3>Introduction à l'intelligence artificielle</h3>
-<p>Découvrez les bases de l'IA et ses applications.</p>
-<small>⏱ 20 minutes</small>
-<br><br>
-<button onclick="alert('Le contenu de cette formation sera ajouté dans une prochaine étape.')">
-Découvrir
-</button>
-</div>
-
-<div class="course">
-<span class="tag">NUMÉRIQUE</span>
-<h3>Maîtriser Internet</h3>
-<p>Comprenez le fonctionnement du Web et ses outils.</p>
-<small>⏱ 15 minutes</small>
-<br><br>
-<button onclick="alert('Le contenu de cette formation sera ajouté dans une prochaine étape.')">
-Découvrir
-</button>
-</div>
-
-<div class="course">
-<span class="tag">PROGRAMMATION</span>
-<h3>Les bases du HTML</h3>
-<p>Créez votre première page Internet.</p>
-<small>⏱ 20 minutes</small>
-<br><br>
-<button onclick="alert('Le contenu de cette formation sera ajouté dans une prochaine étape.')">
-Découvrir
-</button>
-</div>
-
-<div class="course">
-<span class="tag">BUREAUTIQUE</span>
-<h3>Découvrir les outils numériques</h3>
-<p>Apprenez à utiliser les outils du quotidien.</p>
-<small>⏱ 10 minutes</small>
-<br><br>
-<button onclick="alert('Le contenu de cette formation sera ajouté dans une prochaine étape.')">
-Découvrir
-</button>
-</div>
-
+<div class="course"><span class="tag">INFORMATIQUE</span><h3>Introduction à l'intelligence artificielle</h3><p>Découvrez les bases de l'IA et ses applications.</p>⏱ 20 minutes<br><br><button onclick="alert('Formation bientôt disponible')">Découvrir</button></div>
+<div class="course"><span class="tag">NUMÉRIQUE</span><h3>Maîtriser Internet</h3><p>Comprenez le fonctionnement du Web.</p>⏱ 15 minutes<br><br><button onclick="alert('Formation bientôt disponible')">Découvrir</button></div>
+<div class="course"><span class="tag">PROGRAMMATION</span><h3>Les bases du HTML</h3><p>Créez votre première page Internet.</p>⏱ 20 minutes<br><br><button onclick="alert('Formation bientôt disponible')">Découvrir</button></div>
+<div class="course"><span class="tag">BUREAUTIQUE</span><h3>Les outils numériques</h3><p>Apprenez à utiliser les outils du quotidien.</p>⏱ 10 minutes<br><br><button onclick="alert('Formation bientôt disponible')">Découvrir</button></div>
 </div>
 </section>
 
 <!-- CERTIFICATS -->
-
 <section class="page" id="certificates">
-
 <h1>Mes certificats</h1>
-<p class="subtitle">
-Retrouvez ici vos réussites et vos attestations.
-</p>
-<br>
-
-<div class="panel">
-<h2>Aucun certificat pour le moment</h2>
-<p class="subtitle">
-Terminez une formation pour obtenir votre premier certificat.
-</p>
-</div>
-
+<p class="subtitle">Retrouvez vos réussites.</p><br>
+<div class="panel"><h2>Aucun certificat pour le moment</h2><p class="subtitle">Terminez une formation pour obtenir votre premier certificat.</p></div>
 </section>
 
 <!-- AMIS -->
-
 <section class="page" id="friends">
-
 <h1>Ma communauté</h1>
-<p class="subtitle">
-Retrouvez vos amis et apprenez ensemble.
-</p>
-<br>
-
+<p class="subtitle">Retrouvez vos amis et apprenez ensemble.</p><br>
 <div class="panel">
 <h2>Ajouter un ami</h2>
 <input placeholder="Nom d'utilisateur">
-<button onclick="alert('Le système d’amis sera activé dans une prochaine étape.')">
-Rechercher
-</button>
+<button onclick="alert('Fonction disponible après connexion à la base de données.')">Rechercher</button>
 <p class="subtitle">Aucun ami pour le moment.</p>
 </div>
-
 </section>
 
 <!-- PROFIL -->
-
 <section class="page" id="profile">
-
 <h1>Mon compte</h1>
-<p class="subtitle">Votre profil étudiant.</p>
-<br>
-
-<div class="panel">
-<div class="avatar">N</div>
-<br>
-<h2>Utilisateur NEXIA</h2>
-<p class="subtitle">Votre espace personnel.</p>
-</div>
-
+<p class="subtitle">Votre profil étudiant.</p><br>
+<div class="panel"><div class="avatar">N</div><br><h2>Utilisateur NEXIA</h2><p class="subtitle">Espace personnel</p></div>
 </section>
 
 <!-- PARAMETRES -->
-
 <section class="page" id="settings">
-
 <h1>Paramètres</h1>
-<p class="subtitle">
-Personnalisez votre expérience.
-</p>
-<br>
-
+<p class="subtitle">Personnalisez votre expérience.</p><br>
 <div class="panel">
-
 <h2>Préférences générales</h2>
-
-<label>Langue de la plateforme</label>
-<br>
-
-<select id="language" onchange="setLanguage(this.value)">
-<option value="fr">Français</option>
-<option value="en">English</option>
-<option value="es">Español</option>
-<option value="de">Deutsch</option>
-</select>
-
-<br><br>
-
-<label>Apparence</label>
-<br>
-
+<label>Langue</label><br>
+<select onchange="alert('La traduction sera activée prochainement.')">
+<option>Français</option><option>English</option><option>Español</option><option>Deutsch</option>
+</select><br><br>
+<label>Apparence</label><br>
 <select id="theme" onchange="changeTheme(this.value)">
 <option value="light">Mode clair</option>
 <option value="dark">Mode sombre</option>
 </select>
-
 </div>
 </section>
 
+<!-- PANEL ADMIN -->
+<section class="page" id="admin">
+
+<div class="admin-title">
+<div>
+<h1>Centre d'administration</h1>
+<p class="subtitle">Gestion et supervision de NEXIA AI.</p>
+</div>
+<span>ADMIN</span>
+</div>
+
+<div class="notice">
+Attention : cette interface est actuellement une démonstration. Les comptes et les sanctions ne sont pas encore reliés à une base de données. La vraie restriction d'accès sera mise en place avec Supabase.
+</div>
+
+<div class="cards">
+<div class="card"><small>Utilisateurs enregistrés (démo)</small><div class="number" id="totalUsers">3</div></div>
+<div class="card"><small>Comptes bannis (démo)</small><div class="number" id="bannedUsers">0</div></div>
+<div class="card"><small>Sanctions appliquées</small><div class="number" id="totalSanctions">0</div></div>
+</div>
+
+<div class="panel">
+<h2>Gestion des utilisateurs</h2>
+<input id="userSearch" placeholder="Rechercher un utilisateur..." oninput="renderUsers()">
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+<th>Utilisateur</th>
+<th>Email</th>
+<th>Statut</th>
+<th>Actions</th>
+</tr>
+</thead>
+<tbody id="userTable"></tbody>
+</table>
+</div>
+</div>
+
+<div class="panel">
+<h2>Historique des sanctions</h2>
+<div id="history" class="subtitle">Aucune sanction enregistrée.</div>
+</div>
+
+</section>
 </main>
 
+<!-- MODAL DE BANNISSEMENT -->
+<div class="modal" id="banModal">
+<div class="modal-box">
+<h2>Bannir un utilisateur</h2>
+<p class="subtitle" id="banTarget"></p>
+<label>Type de bannissement</label>
+<select id="banType" onchange="toggleDuration()">
+<option value="temporary">Temporaire</option>
+<option value="permanent">Définitif</option>
+</select>
+<div id="durationBox">
+<label>Durée</label>
+<select id="banDuration">
+<option value="1 jour">1 jour</option>
+<option value="7 jours">7 jours</option>
+<option value="30 jours">30 jours</option>
+<option value="90 jours">90 jours</option>
+</select>
+</div>
+<label>Motif</label>
+<input id="banReason" placeholder="Motif du bannissement">
+<div class="modal-actions">
+<button class="secondary" onclick="closeModal()">Annuler</button>
+<button class="danger" onclick="confirmBan()">Confirmer</button>
+</div>
+</div>
+</div>
+
 <script>
+let users=[
+{id:1,name:"Alexandre",email:"alexandre@example.com",status:"Actif"},
+{id:2,name:"Camille",email:"camille@example.com",status:"Actif"},
+{id:3,name:"Thomas",email:"thomas@example.com",status:"Actif"}
+];
+
+let sanctions=[];
+let selectedUser=null;
 
 function showPage(id,el){
-
-document.querySelectorAll('.page')
-.forEach(p=>p.classList.remove('active'));
-
+document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
 document.getElementById(id).classList.add('active');
-
-document.querySelectorAll('.nav')
-.forEach(n=>n.classList.remove('active'));
-
+document.querySelectorAll('.nav').forEach(n=>n.classList.remove('active'));
 if(el)el.classList.add('active');
+}
 
+function renderUsers(){
+let query=document.getElementById('userSearch').value.toLowerCase();
+let list=users.filter(u=>(u.name+" "+u.email).toLowerCase().includes(query));
+document.getElementById('userTable').innerHTML=list.map(u=>`
+<tr>
+<td><b>${escapeHTML(u.name)}</b></td>
+<td>${escapeHTML(u.email)}</td>
+<td><span class="status ${u.status==='Banni'?'banned':''}">${u.status}</span></td>
+<td>
+${u.status==='Banni'
+?`<button class="success" onclick="unban(${u.id})">Débannir</button>`
+:`<button class="danger" onclick="openBan(${u.id})">Bannir</button>`}
+</td>
+</tr>`).join('');
+document.getElementById('totalUsers').textContent=users.length;
+document.getElementById('bannedUsers').textContent=users.filter(u=>u.status==='Banni').length;
+document.getElementById('totalSanctions').textContent=sanctions.length;
+}
+
+function escapeHTML(str){
+return str.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+
+function openBan(id){
+selectedUser=id;
+let user=users.find(u=>u.id===id);
+document.getElementById('banTarget').textContent="Utilisateur : "+user.name;
+document.getElementById('banReason').value="";
+document.getElementById('banType').value="temporary";
+toggleDuration();
+document.getElementById('banModal').style.display='flex';
+}
+
+function toggleDuration(){
+document.getElementById('durationBox').style.display=
+document.getElementById('banType').value==='temporary'?'block':'none';
+}
+
+function closeModal(){
+document.getElementById('banModal').style.display='none';
+}
+
+function confirmBan(){
+let user=users.find(u=>u.id===selectedUser);
+if(!user)return;
+let type=document.getElementById('banType').value;
+let duration=type==='temporary'?document.getElementById('banDuration').value:'Définitif';
+let reason=document.getElementById('banReason').value.trim();
+if(!reason){alert('Merci de renseigner un motif.');return;}
+user.status='Banni';
+sanctions.unshift({
+name:user.name,
+type:type,
+duration:duration,
+reason:reason,
+date:new Date().toLocaleString('fr-FR')
+});
+renderHistory();
+renderUsers();
+closeModal();
+}
+
+function unban(id){
+let user=users.find(u=>u.id===id);
+if(!user)return;
+if(!confirm('Confirmer le débannissement de '+user.name+' ?'))return;
+user.status='Actif';
+sanctions.unshift({
+name:user.name,
+type:'Débannissement',
+duration:'Réactivation',
+reason:'Compte réactivé par administration',
+date:new Date().toLocaleString('fr-FR')
+});
+renderHistory();
+renderUsers();
+}
+
+function renderHistory(){
+let box=document.getElementById('history');
+if(!sanctions.length){
+box.textContent='Aucune sanction enregistrée.';
+return;
+}
+box.innerHTML=sanctions.map(s=>`
+<div style="padding:13px 0;border-bottom:1px solid var(--line)">
+<b>${escapeHTML(s.name)}</b> — ${escapeHTML(s.type)}<br>
+<span>${escapeHTML(s.duration)} · ${escapeHTML(s.date)}</span><br>
+Motif : ${escapeHTML(s.reason)}
+</div>`).join('');
 }
 
 function changeTheme(value){
-
 document.body.classList.toggle('dark',value==='dark');
-
 localStorage.setItem('nexia-theme',value);
-
 }
 
-function searchCourses(value){
-
-const q=value.toLowerCase();
-
-document.querySelectorAll('#courseList .course')
-.forEach(c=>{
-c.style.display=
-c.innerText.toLowerCase().includes(q)
-?'block':'none';
+function searchAll(value){
+let page=document.querySelector('.page.active');
+if(page&&page.id==='courses'){
+document.querySelectorAll('#courseList .course').forEach(c=>{
+c.style.display=c.innerText.toLowerCase().includes(value.toLowerCase())?'block':'none';
 });
-
 }
-
-function setLanguage(value){
-
-alert('Le changement complet de langue sera ajouté dans une prochaine étape.');
-
 }
 
 if(localStorage.getItem('nexia-theme')==='dark'){
-
 document.body.classList.add('dark');
-
 document.getElementById('theme').value='dark';
-
 }
 
+renderUsers();
 </script>
 
 </body>
